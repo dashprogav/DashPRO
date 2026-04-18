@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashPRO | Sales Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                bg: '#060B18',
+                'bg-alt': '#0A1022',
+                card: '#111A2E',
+                'card-alt': '#141F36',
+                border: 'rgba(255,255,255,0.06)',
+                'border-alt': 'rgba(255,255,255,0.05)',
+                text: '#F2F5FF',
+                'text-muted': '#9BA6C7',
+                accent: '#4F8CFF',
+                'accent-alt': '#3E7BFF',
+                input: '#0F172A',
+                'input-border': '#263353',
+              }
+            },
+            backgroundImage: {
+              'btn-primary': 'linear-gradient(135deg, #4F8CFF, #3E7BFF)',
+              'btn-primary-hover': 'linear-gradient(135deg, #3E7BFF, #2E6BFF)',
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          font-weight: 400;
+          transition: background-color 0.3s ease;
+          background-color: #060B18;
+          color: #F2F5FF;
+        }
+
+        /* ── Tipografia Global ─────────────────────────────────────────────
+           Neutraliza o uso excessivo de font-black (900) e font-bold (700)
+           espalhados pelos componentes. Substitui por pesos mais leves.
+        ─────────────────────────────────────────────────────────────────── */
+
+        /* Converte font-black (900) → 500 por padrão */
+        .font-black { font-weight: 500 !important; }
+
+        /* Converte font-bold (700) → 400 por padrão */
+        .font-bold { font-weight: 400 !important; }
+
+        /* Converte font-semibold (600) → 400 por padrão */
+        .font-semibold { font-weight: 400 !important; }
+
+        /* Mantém peso médio em títulos e badges de destaque */
+        h1, h2, h3 { font-weight: 500; }
+
+        /* Botões primários de ação mantêm 500 para leitura clara */
+        button.font-black,
+        a.font-black { font-weight: 500 !important; }
+
+        /* Tracking excessivo: neutraliza uppercase + tracking-widest em labels */
+        .text-\[9px\].font-black,
+        .text-\[10px\].font-black,
+        .text-\[8px\].font-black {
+          font-weight: 400 !important;
+          letter-spacing: 0.04em;
+        }
+
+        /* Placeholders de input: mantém leve mas legível */
+        ::placeholder {
+          font-weight: 400;
+          letter-spacing: 0.05em;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #4F8CFF; border-radius: 10px; }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .dashboard-cards {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* Mobile retrato */
+        @media (max-width: 767px) and (orientation: portrait) {
+            .dashboard-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Mobile paisagem e Tablet */
+        @media (max-width: 1023px) and (orientation: landscape) {
+            .dashboard-cards {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px; /* Slightly tighter gap in landscape */
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .dashboard-cards {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            }
+        }
+
+        /* Custom Theme Classes */
+        .glass-card {
+          background: #111A2E;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+          background: #4F8CFF;
+          color: #FFFFFF;
+          transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+          background: #3E7BFF;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: #F2F5FF;
+          transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .input-field {
+          background: #0F172A;
+          border: 1px solid #263353;
+          color: #F2F5FF;
+          border-radius: 12px;
+          transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+          border-color: #4F8CFF;
+          outline: none;
+        }
+
+        .text-muted {
+          color: #9BA6C7;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

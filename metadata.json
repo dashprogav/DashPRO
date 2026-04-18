@@ -1,0 +1,7 @@
+{
+  "name": "DASH PRO",
+  "description": "Uma plataforma completa para gerenciamento de vendas, cadastro de produtos, salas e serviços, agora com Mapa de Clientes interativo baseado em CEP.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
